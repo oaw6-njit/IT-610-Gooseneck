@@ -1,0 +1,20 @@
+Port 22
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Authentication
+PermitRootLogin yes
+PasswordAuthentication yes
+PubkeyAuthentication yes
+#PubkeyAuthentication no
+PermitEmptyPasswords no
+
+# Forwarding
+X11Forwarding yes
+X11UseLocalhost no
+
+# User Restrictions
+AllowUsers root admin student
+
