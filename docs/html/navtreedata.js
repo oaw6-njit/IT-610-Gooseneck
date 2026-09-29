@@ -24,12 +24,21 @@
 */
 var NAVTREE =
 [
-  [ "IT 610 - Gooseneck", "index.html", ]
+  [ "IT 610 - Gooseneck", "index.html", [
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"_dockerfile.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

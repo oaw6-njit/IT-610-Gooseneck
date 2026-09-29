@@ -1,0 +1,32 @@
+\doxysection{Dockerfile}
+\hypertarget{_dockerfile_source}{}\label{_dockerfile_source}\doxymbox{\hyperlink{_dockerfile}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#Gooseneck\ File\ Server\ Dockerfile}}
+\DoxyCodeLine{00002\ FROM\ \doxymbox{\hyperlink{_dockerfile_aca5cf0c1961ea561286473798653631a}{ubuntu}}:24.04}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#Configure\ acl/linux\ permission\ set}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#Install\ dependencies\ and\ configure\ permissions\ sets}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#nginx}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#openssh\ server}}
+\DoxyCodeLine{00009\ RUN\ apt-\/get\ update\ \&\&\ apt-\/get\ install\ -\/y\ \(\backslash\)}
+\DoxyCodeLine{00010\ \ \ \ \ nginx\ \(\backslash\)}
+\DoxyCodeLine{00011\ \ \ \ \ openssh-\/server}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#Load\ users\ from\ DB\ Test\ user}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#Load\ Student\ DB\ webpages\ into\ dir}}
+\DoxyCodeLine{00015\ COPY\ index.html\ /var/www/html/}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#RUN\ useradd}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#Start\ and\ configure\ SSH\ server}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#\ Either\ import\ SSH\ config\ file\ from\ project\ dir\ or\ manually\ sed\ file}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#Start\ and\ configure\ web\ server}}
+\DoxyCodeLine{00022\ EXPOSE\ 80}
+\DoxyCodeLine{00023\ CMD\ [\textcolor{stringliteral}{"{}nginx"{}},\ \textcolor{stringliteral}{"{}-\/g"{}},\ \textcolor{stringliteral}{"{}daemon\ off;"{}}]}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#To\ run\ server,}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#docker\ run\ -\/d\ -\/p\ 8080:80\ <container\_name>}}
+\DoxyCodeLine{00027\ }
+
+\end{DoxyCode}

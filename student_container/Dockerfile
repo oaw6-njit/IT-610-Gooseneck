@@ -1,4 +1,6 @@
-#Gooseneck Student LXQT container
+##
+# @file Dockerfile
+# @brief Gooseneck Student LXQT container image
 # To-do list (Put in separate doc)
 # Give student a GUI interface for their container
 # Give student access to web server (localhost)
@@ -12,7 +14,9 @@ FROM ubuntu:24.04
 
 #Configure acl/linux permission set
 
-#Install dependencies and configure permissions sets
+##
+# @brief Install dependencies and configure permissions sets
+##
 RUN apt-get update && apt-get install -y \
 	lxqt \
 	tigervnc-standalone-server \
