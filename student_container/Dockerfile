@@ -10,6 +10,15 @@
 # Give admin account
 # Give student limited sudo access.
 
+# To build container, use
+# docker build -t student_image .
+
+# To run container, use
+# docker run -d --name student_env -p 2222:22 -p 5901:5901 -p 5902:5902 student_img
+# (Make a script to run the container and name it)
+
+
+
 FROM ubuntu:24.04
 
 #Configure acl/linux permission set
@@ -21,15 +30,16 @@ FROM ubuntu:24.04
 #To-do: Make install apps a loadable ini, filter out comments and error check.
 COPY core.sh /core.sh
 COPY core.ini /core.ini
-RUN mkdir -p /log/build
-RUN touch /log/build/student_build.log
+RUN mkdir -p /logs/build
+RUN touch /logs/build/student_build.log
 RUN chmod 764 /core.sh
 
 RUN /core.sh
 ENV EXIT_CODE=$?
-RUN if [ $EXIT_CODE -ne 0 ]; then \
-    echo "Build failed with exit code $EXIT_CODE. Check your core.ini file." \
-    fi
+RUN if [ "$EXIT_CODE" -ne 0 ]; then \
+	echo "Build failed with exit code $EXIT_CODE. Check your core.ini file."; \
+	fi
+
 #RUN ./apps.sh
 #RUN ./app.config.sh
 
@@ -72,7 +82,4 @@ EXPOSE 22 5901 5902
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# To run container, use
-#docker run -d --name student_env -p 2222:22 -p 5901:5901 -p 5902:5902 ucid-instance
-#(Make a script to run the container and name it)
 
