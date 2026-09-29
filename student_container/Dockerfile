@@ -17,15 +17,31 @@ FROM ubuntu:24.04
 ##
 # @brief Install dependencies and configure permissions sets
 ##
-RUN apt-get update && apt-get install -y \
-	lxqt \
-	tigervnc-standalone-server \
-	tigervnc-common \
-	openssh-server \
-	dbus-x11 \
-	x11-xserver-utils \
-	xterm\
-	curl
+
+#To-do: Make install apps a loadable ini, filter out comments and error check.
+COPY core.sh /core.sh
+COPY core.ini /core.ini
+RUN mkdir -p /log/build
+RUN touch /log/build/student_build.log
+RUN chmod 764 /core.sh
+
+RUN /core.sh
+ENV EXIT_CODE=$?
+RUN if [ $EXIT_CODE -ne 0 ]; then \
+    echo "Build failed with exit code $EXIT_CODE. Check your core.ini file." \
+    fi
+#RUN ./apps.sh
+#RUN ./app.config.sh
+
+#RUN apt-get update && apt-get install -y \
+#	lxqt \
+#	tigervnc-standalone-server \
+#	tigervnc-common \
+#	openssh-server \
+#	dbus-x11 \
+#	x11-xserver-utils \
+#	xterm \
+#	curl \
 
 #Load users from DB Test user
 #Load Student DB webpages into dir
