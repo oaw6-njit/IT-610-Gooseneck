@@ -18,14 +18,53 @@ FROM ubuntu:24.04
 # @brief Install dependencies and configure permissions sets
 ##
 RUN apt-get update && apt-get install -y \
-	lxqt \
-	tigervnc-standalone-server \
-	tigervnc-common \
-	openssh-server \
-	dbus-x11 \
-	x11-xserver-utils \
-	xterm\
-	curl
+lxqt \
+tigervnc-standalone-server \
+tigervnc-common \
+openssh-server \
+dbus-x11 \
+x11-xserver-utils \
+xterm \
+curl \
+build-essential \
+wget \
+ca-certificates \
+git \
+unzip \
+zip \
+python3 \
+python3-pip \
+python3-venv \
+golang-go \
+rustc \
+cargo \
+default-jdk \
+nodejs \
+npm \
+git \
+php \
+postgresql \
+mariadb-server \
+vim \
+neovim \
+nano \
+sudo \
+openssh-client \
+nginx \
+wireshark \
+nmap \
+gfortran \
+python3-pandas \
+python3-numpy \
+python3-matplotlib \
+python3-scipy \
+libreoffice \
+gimp \
+inkscape \
+tcpdump \
+iproute2 \
+openssl \
+firefox 
 
 #Load users from DB Test user
 #Load Student DB webpages into dir

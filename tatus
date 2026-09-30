@@ -1,0 +1,31 @@
+[33mcommit e032a9202bf6bfc143f8176c6346614ab082590a[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: U-NJITDM\oaw6 <oaw6@9TJ8SW3.njitdm.campus.njit.edu>
+Date:   Tue Sep 29 20:52:05 2026 -0400
+
+    Revert "Doxyfile fully working. Tested doc gen. Works! Now to document the containers and flesh them out."
+    
+    This reverts commit 43626f5b799a21396ce1ca0fc16bcc8f0404e218.
+
+[33mcommit 43626f5b799a21396ce1ca0fc16bcc8f0404e218[m[33m ([m[1;31morigin/docs[m[33m, [m[1;32mmaster[m[33m, [m[1;32mdocs[m[33m)[m
+Author: U-NJITDM\oaw6 <oaw6@9TJ8SW3.njitdm.campus.njit.edu>
+Date:   Mon Sep 28 20:46:02 2026 -0400
+
+    Doxyfile fully working. Tested doc gen. Works! Now to document the containers and flesh them out.
+
+[33mcommit ea592ac3894f809885f64ff00d4c1460e0951566[m
+Author: U-NJITDM\oaw6 <oaw6@9TJ8SW3.njitdm.campus.njit.edu>
+Date:   Mon Sep 28 12:36:25 2026 -0400
+
+    Boilerplate doxyfile and config. Need bash and Dockerfile implementation.
+
+[33mcommit 7a07b62c29295176ab8559aa4e0bf99587fb5e53[m
+Author: U-NJITDM\oaw6 <oaw6@9TJ8SW3.njitdm.campus.njit.edu>
+Date:   Thu Sep 24 13:53:11 2026 -0400
+
+    Created base for VNC/SSH access (WILL REMOVE SECRETS LATER)
+
+[33mcommit 8d85eb48587cdab48a08faf59224bc0b1b13fb72[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: U-NJITDM\oaw6 <oaw6@9TJ8SW3.njitdm.campus.njit.edu>
+Date:   Tue Sep 15 19:35:03 2026 -0400
+
+    Initial commit
