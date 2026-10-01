@@ -95,7 +95,13 @@ EXPOSE 22 5901 5902
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
+# To build container, use
+#docker build --progress=plain -t student_img . | tee logs/build/student_img.log
+#
+#Include --no-cache for a full build and verbose log
+#
 # To run container, use
-#docker run -d --name student_env -p 2222:22 -p 5901:5901 -p 5902:5902 ucid-instance
-#(Make a script to run the container and name it)
+#docker run -d --name student_env -p 2222:22 -p 5901:5901 -p 5902:5902 student_img
+
+# To-do (Make a script to run the container and name it)
 

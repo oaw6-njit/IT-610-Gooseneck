@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+#Entrypoint.sh
+#Setup VNC server on container launch.
+
+#Stop script upon ANY non-zero exit code
 set -e
 
 # Helper to configure VNC directory and startup scripts per user
