@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ubuntu_0',['ubuntu',['../_dockerfile.html#aca5cf0c1961ea561286473798653631a',1,'Dockerfile']]]
+  ['setup_5fvnc_0',['setup_vnc',['../entrypoint_8sh.html#a297c2665a54c14c0828bf007387f3e03',1,'entrypoint.sh']]]
 ];

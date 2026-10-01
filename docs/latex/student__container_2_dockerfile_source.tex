@@ -2,67 +2,122 @@
 \hypertarget{student__container_2_dockerfile_source}{}\label{student__container_2_dockerfile_source}\index{student\_container/Dockerfile@{student\_container/Dockerfile}}
 \doxymbox{\hyperlink{student__container_2_dockerfile}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#\#}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#\ @file\ Dockerfile}}
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#\ @brief\ Gooseneck\ Student\ LXQT\ container\ image}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#\ To-\/do\ list\ (Put\ in\ separate\ doc)}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#\ Give\ student\ a\ GUI\ interface\ for\ their\ container}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#\ Give\ student\ access\ to\ web\ server\ (localhost)}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#\ Give\ readme\ for\ student\ to\ easily\ use\ this\ container}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#\ Give\ student\ account\ based\ on\ ucid\ (provided\ by\ db\ or\ api\ request)}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#\ Hide\ root\ priviliges}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#\ Give\ admin\ account}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#\ Give\ student\ limited\ sudo\ access.}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ FROM\ \doxymbox{\hyperlink{_dockerfile_aca5cf0c1961ea561286473798653631a}{ubuntu}}:24.04}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#Configure\ acl/linux\ permission\ set}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\#}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#\ @brief\ Install\ dependencies\ and\ configure\ permissions\ sets}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#\#}}
-\DoxyCodeLine{00020\ RUN\ apt-\/get\ update\ \&\&\ apt-\/get\ install\ -\/y\ \(\backslash\)}
-\DoxyCodeLine{00021\ \ \ \ \ lxqt\ \(\backslash\)}
-\DoxyCodeLine{00022\ \ \ \ \ tigervnc-\/standalone-\/server\ \(\backslash\)}
-\DoxyCodeLine{00023\ \ \ \ \ tigervnc-\/common\ \(\backslash\)}
-\DoxyCodeLine{00024\ \ \ \ \ openssh-\/server\ \(\backslash\)}
-\DoxyCodeLine{00025\ \ \ \ \ dbus-\/x11\ \(\backslash\)}
-\DoxyCodeLine{00026\ \ \ \ \ x11-\/xserver-\/utils\ \(\backslash\)}
-\DoxyCodeLine{00027\ \ \ \ \ xterm\(\backslash\)}
-\DoxyCodeLine{00028\ \ \ \ \ curl}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#Load\ users\ from\ DB\ Test\ user}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#Load\ Student\ DB\ webpages\ into\ dir}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#Load\ config\ for\ ssh\ and\ x-\/utils}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#Setup\ SSH\ config}}
-\DoxyCodeLine{00035\ RUN\ mkdir\ -\/p\ /var/run/sshd}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#Create\ accounts\ with\ default\ passwords\ (WILL\ REPLACE\ WITH\ DB\ AND\ HASHES\ LATER)}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#Can\ replace\ echo\ with\ file/DB\ substitutions\ later.}}
-\DoxyCodeLine{00039\ RUN\ echo\ \textcolor{stringliteral}{"{}root:rootpass"{}}\ |\ chpasswd}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ admin\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00042\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}admin:adminpass"{}}\ |\ chpasswd\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00043\ \ \ \ \ usermod\ -\/aG\ sudo\ admin}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ student\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00046\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}student:studentpass"{}}\ |\ chpasswd}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#Copy\ config\ and\ entry\ point\ files}}
-\DoxyCodeLine{00049\ COPY\ sshd\_config\ /etc/ssh/sshd\_config}
-\DoxyCodeLine{00050\ COPY\ entrypoint.sh\ /usr/local/bin/entrypoint.sh}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ RUN\ chmod\ +x\ /usr/local/bin/entrypoint.sh}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#\ SSH\ (22),\ Student\ VNC\ (5901),\ Admin\ VNC\ (5902)}}
-\DoxyCodeLine{00055\ EXPOSE\ 22\ 5901\ 5902}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ ENTRYPOINT\ [\textcolor{stringliteral}{"{}/usr/local/bin/entrypoint.sh"{}}]}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#\ To\ run\ container,\ use}}
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#docker\ run\ -\/d\ -\/-\/name\ student\_env\ -\/p\ 2222:22\ -\/p\ 5901:5901\ -\/p\ 5902:5902\ ucid-\/instance}}
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#(Make\ a\ script\ to\ run\ the\ container\ and\ name\ it)}}
-\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#\ @details\ The\ student\ container\ Dockerfile\ that\ builds\ a\ default}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#\ \ \ student\ container.\ Based\ on\ Ubuntu\ 24.04\ image.\ Use\ with\ a}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#\ \ \ script\ to\ give\ the\ container\ the\ name\ of\ a\ student's\ ucid.}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#\ @details\ To-\/do\ list\ (Put\ in\ separate\ doc)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#\ \ \ Give\ student\ a\ GUI\ interface\ for\ their\ container}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#\ \ \ Give\ student\ access\ to\ web\ server\ (localhost)}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#\ \ \ Give\ readme\ for\ student\ to\ easily\ use\ this\ container}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#\ \ \ Give\ student\ account\ based\ on\ ucid\ (provided\ by\ db\ or\ api\ request)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#\ \ \ Hide\ root\ priviliges}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#\ \ \ Give\ admin\ account}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#\ \ \ Give\ student\ limited\ sudo\ access.}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#\ \ \ Use\ -\/-\/no-\/install-\/recommends\ for\ minimal\ installation.\ (NOT\ FOR\ TigerVNC)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ FROM\ \doxymbox{\hyperlink{_dockerfile_aca5cf0c1961ea561286473798653631a}{ubuntu}}:24.04}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#Configure\ acl/linux\ permission\ set}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\#}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ @brief\ Installs\ dependencies\ and\ configure\ permissions\ sets}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#\ @details\ To-\/do\ list\ (Put\ in\ separate\ doc)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\ \ \ split\ apt\ into\ no\ recommends\ and\ full\ installs}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#\ \ \ have\ ansible\ install/update\ packages.}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#\ \ \ run\ sudo\ apt\ update\ and\ full-\/upgrade\ on\ start}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#\ \ \ rebuild\ image\ every\ x\ interval\ to\ maintain\ updates\ for\ students}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#\#}}
+\DoxyCodeLine{00031\ RUN\ apt-\/get\ update\ \&\&\ apt-\/get\ install\ -\/y\ \(\backslash\)}
+\DoxyCodeLine{00032\ lxqt\ \(\backslash\)}
+\DoxyCodeLine{00033\ tigervnc-\/standalone-\/server\ \(\backslash\)}
+\DoxyCodeLine{00034\ tigervnc-\/common\ \(\backslash\)}
+\DoxyCodeLine{00035\ openssh-\/server\ \(\backslash\)}
+\DoxyCodeLine{00036\ dbus-\/x11\ \(\backslash\)}
+\DoxyCodeLine{00037\ x11-\/xserver-\/utils\ \(\backslash\)}
+\DoxyCodeLine{00038\ xterm\ \(\backslash\)}
+\DoxyCodeLine{00039\ curl\ \(\backslash\)}
+\DoxyCodeLine{00040\ build-\/essential\ \(\backslash\)}
+\DoxyCodeLine{00041\ wget\ \(\backslash\)}
+\DoxyCodeLine{00042\ ca-\/certificates\ \(\backslash\)}
+\DoxyCodeLine{00043\ git\ \(\backslash\)}
+\DoxyCodeLine{00044\ unzip\ \(\backslash\)}
+\DoxyCodeLine{00045\ zip\ \(\backslash\)}
+\DoxyCodeLine{00046\ python3\ \(\backslash\)}
+\DoxyCodeLine{00047\ python3-\/pip\ \(\backslash\)}
+\DoxyCodeLine{00048\ python3-\/venv\ \(\backslash\)}
+\DoxyCodeLine{00049\ golang-\/go\ \(\backslash\)}
+\DoxyCodeLine{00050\ rustc\ \(\backslash\)}
+\DoxyCodeLine{00051\ cargo\ \(\backslash\)}
+\DoxyCodeLine{00052\ default-\/jdk\ \(\backslash\)}
+\DoxyCodeLine{00053\ nodejs\ \(\backslash\)}
+\DoxyCodeLine{00054\ npm\ \(\backslash\)}
+\DoxyCodeLine{00055\ git\ \(\backslash\)}
+\DoxyCodeLine{00056\ php\ \(\backslash\)}
+\DoxyCodeLine{00057\ postgresql\ \(\backslash\)}
+\DoxyCodeLine{00058\ mariadb-\/server\ \(\backslash\)}
+\DoxyCodeLine{00059\ vim\ \(\backslash\)}
+\DoxyCodeLine{00060\ neovim\ \(\backslash\)}
+\DoxyCodeLine{00061\ nano\ \(\backslash\)}
+\DoxyCodeLine{00062\ sudo\ \(\backslash\)}
+\DoxyCodeLine{00063\ openssh-\/client\ \(\backslash\)}
+\DoxyCodeLine{00064\ nginx\ \(\backslash\)}
+\DoxyCodeLine{00065\ wireshark\ \(\backslash\)}
+\DoxyCodeLine{00066\ nmap\ \(\backslash\)}
+\DoxyCodeLine{00067\ gfortran\ \(\backslash\)}
+\DoxyCodeLine{00068\ python3-\/pandas\ \(\backslash\)}
+\DoxyCodeLine{00069\ python3-\/numpy\ \(\backslash\)}
+\DoxyCodeLine{00070\ python3-\/matplotlib\ \(\backslash\)}
+\DoxyCodeLine{00071\ python3-\/scipy\ \(\backslash\)}
+\DoxyCodeLine{00072\ libreoffice\ \(\backslash\)}
+\DoxyCodeLine{00073\ gimp\ \(\backslash\)}
+\DoxyCodeLine{00074\ inkscape\ \(\backslash\)}
+\DoxyCodeLine{00075\ tcpdump\ \(\backslash\)}
+\DoxyCodeLine{00076\ iproute2\ \(\backslash\)}
+\DoxyCodeLine{00077\ openssl\ \(\backslash\)}
+\DoxyCodeLine{00078\ firefox\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#Load\ users\ from\ DB\ Test\ user}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#Load\ Student\ DB\ webpages\ into\ dir}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#Load\ config\ for\ ssh\ and\ x-\/utils}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#\ @brief\ Setup\ SSH\ config\ with\ file}}
+\DoxyCodeLine{00085\ RUN\ mkdir\ -\/p\ /var/run/sshd}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#\ @brief\ Cieate\ accounts\ with\ default\ passwords\ (WILL\ REPLACE\ WITH\ DB\ AND\ HASHES\ LATER)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#Can\ replace\ echo\ with\ file/DB\ substitutions\ later.}}
+\DoxyCodeLine{00089\ RUN\ echo\ \textcolor{stringliteral}{"{}root:rootpass"{}}\ |\ chpasswd}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ admin\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00092\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}admin:adminpass"{}}\ |\ chpasswd\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00093\ \ \ \ \ usermod\ -\/aG\ sudo\ admin}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ student\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00096\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}student:studentpass"{}}\ |\ chpasswd}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#Copy\ config\ and\ entry\ point\ files}}
+\DoxyCodeLine{00099\ COPY\ sshd\_config\ /etc/ssh/sshd\_config}
+\DoxyCodeLine{00100\ COPY\ entrypoint.sh\ /usr/local/bin/entrypoint.sh}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ RUN\ chmod\ +x\ /usr/local/bin/entrypoint.sh}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#\ SSH\ (22),\ Student\ VNC\ (5901),\ Admin\ VNC\ (5902)}}
+\DoxyCodeLine{00105\ EXPOSE\ 22\ 5901\ 5902}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ ENTRYPOINT\ [\textcolor{stringliteral}{"{}/usr/local/bin/entrypoint.sh"{}}]}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#\ @details\ To\ build\ container,\ use}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#docker\ build\ -\/-\/progress=plain\ -\/t\ student\_img\ .\ |\ tee\ logs/build/student\_img.log}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#Include\ -\/-\/no-\/cache\ for\ a\ full\ build\ and\ verbose\ log}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#\ To\ run\ container,\ use}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#docker\ run\ -\/d\ -\/-\/name\ student\_env\ -\/p\ 2222:22\ -\/p\ 5901:5901\ -\/p\ 5902:5902\ student\_img}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#\ To-\/do\ (Make\ a\ script\ to\ run\ the\ container\ and\ name\ it)}}
 
 \end{DoxyCode}

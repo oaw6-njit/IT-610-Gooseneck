@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
-  0: "degosu",
-  1: "de",
+  0: "degorsu",
+  1: "der",
   2: "s",
   3: "gou"
 };
