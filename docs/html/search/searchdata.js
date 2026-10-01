@@ -1,24 +1,18 @@
 var indexSectionsWithContent =
 {
-  0: "degorsu",
-  1: "der",
-  2: "s",
-  3: "gou"
+  0: "der",
+  1: "der"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "functions",
-  3: "variables"
+  1: "files"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Files",
-  2: "Functions",
-  3: "Variables"
+  1: "Files"
 };
 

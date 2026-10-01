@@ -1,33 +1,32 @@
-#########################################################################
-# @file Dockerfile
-# @brief Gooseneck Student LXQT container image
-# @details The student container Dockerfile that builds a default
-#	student container. Based on Ubuntu 24.04 image. Use with a
-#	script to give the container the name of a student's ucid.
-#########################################################################
-# @details To-do list (Put in separate doc)
-#	Give student a GUI interface for their container
-#	Give student access to web server (localhost)
-#	Give readme for student to easily use this container
-#	Give student account based on ucid (provided by db or api request)
-#	Hide root priviliges
-#	Give admin account
-#	Give student limited sudo access.
-#	Use --no-install-recommends for minimal installation. (NOT FOR TigerVNC)
-#########################################################################
+# ########################################################################
+## @file Dockerfile
+## @brief Gooseneck Student LXQT container image
+## @details The student container Dockerfile that builds a default
+##	student container. Based on Ubuntu 24.04 image. Use with a
+##	script to give the container the name of a student's ucid.
+# ########################################################################
+## @details To-do list (Put in separate doc)
+##	Give student a GUI interface for their container
+##	Give student access to web server (localhost)
+##	Give readme for student to easily use this container
+##	Give student account based on ucid (provided by db or api request)
+##	Hide root priviliges
+##	Give admin account
+##	Give student limited sudo access.
+##	Use --no-install-recommends for minimal installation. (NOT FOR TigerVNC)
+# ########################################################################
 
 FROM ubuntu:24.04
 
 #Configure acl/linux permission set
 
-##
-# @brief Installs dependencies and configure permissions sets
-# @details To-do list (Put in separate doc)
-#	split apt into no recommends and full installs
-#	have ansible install/update packages.
-#	run sudo apt update and full-upgrade on start
-#	rebuild image every x interval to maintain updates for students
-##
+## @brief Installs dependencies and configure permissions sets
+## @details To-do list (Put in separate doc)
+##	split apt into no recommends and full installs
+##	have ansible install/update packages.
+##	run sudo apt update and full-upgrade on start
+##	rebuild image every x interval to maintain updates for students
+
 RUN apt-get update && apt-get install -y \
 lxqt \
 tigervnc-standalone-server \
@@ -81,11 +80,11 @@ firefox
 #Load Student DB webpages into dir
 #Load config for ssh and x-utils
 
-# @brief Setup SSH config with file
+## @brief Setup SSH config with file
 RUN mkdir -p /var/run/sshd
 
-# @brief Cieate accounts with default passwords (WILL REPLACE WITH DB AND HASHES LATER)
-#Can replace echo with file/DB substitutions later.
+## @brief Create accounts with default passwords (WILL REPLACE WITH DB AND HASHES LATER)
+## Can replace echo with file/DB substitutions later.
 RUN echo "root:rootpass" | chpasswd
 
 RUN useradd -m -s /bin/bash admin && \
@@ -106,12 +105,12 @@ EXPOSE 22 5901 5902
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# @details To build container, use
-#docker build --progress=plain -t student_img . | tee logs/build/student_img.log
-#
-#Include --no-cache for a full build and verbose log
-#
-# To run container, use
-#docker run -d --name student_env -p 2222:22 -p 5901:5901 -p 5902:5902 student_img
-#
-# To-do (Make a script to run the container and name it)
+## @details To build container, use
+## docker build --progress=plain -t student_img . | tee logs/build/student_img.log
+##
+## Include --no-cache for a full build and verbose log
+##
+##  To run container, use
+## docker run -d --name student_env -p 2222:22 -p 5901:5901 -p 5902:5902 student_img
+## 
+## To-do (Make a script to run the container and name it)

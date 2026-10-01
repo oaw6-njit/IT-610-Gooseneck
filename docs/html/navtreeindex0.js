@@ -1,21 +1,13 @@
 var NAVTREEINDEX0 =
 {
 "_dockerfile.html":[0,0,1],
-"_dockerfile.html#a2b64c734b7da88e224fdc58ae1db9e1f":[0,0,1,0],
-"_dockerfile.html#a46302cb1f0c9110c4c07f0b93d199a15":[0,0,1,1],
-"_dockerfile.html#aca5cf0c1961ea561286473798653631a":[0,0,1,2],
 "_dockerfile_source.html":[0,0,1],
 "dir_cd51cfefbd7ff09fdf625949120c69d3.html":[0,0,0],
 "entrypoint_8sh.html":[0,0,0,1],
-"entrypoint_8sh.html#a297c2665a54c14c0828bf007387f3e03":[0,0,0,1,0],
 "files.html":[0,0],
-"globals.html":[0,1,0],
-"globals_func.html":[0,1,1],
-"globals_vars.html":[0,1,2],
 "index.html":[],
 "pages.html":[],
 "run__gooseneck_8sh.html":[0,0,0,2],
-"run__gooseneck_8sh.html#aceeacb0e476000d4d0138300eea31785":[0,0,0,2,0],
 "student__container_2_dockerfile.html":[0,0,0,0],
 "student__container_2_dockerfile_source.html":[0,0,0,0]
 };

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#Entrypoint.sh
+## @brief Entrypoint.sh
 #Setup VNC server on container launch.
 
 #Stop script upon ANY non-zero exit code
