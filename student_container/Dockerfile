@@ -27,6 +27,7 @@ FROM ubuntu:24.04
 ##	run sudo apt update and full-upgrade on start
 ##	rebuild image every x interval to maintain updates for students
 
+##Full installs (core)
 RUN apt-get update && apt-get install -y \
 lxqt \
 tigervnc-standalone-server \
@@ -34,6 +35,11 @@ tigervnc-common \
 openssh-server \
 dbus-x11 \
 x11-xserver-utils \
+&& apt-get clean
+
+##Minimal installs (apps)
+RUN apt-get install -y --no-install-recommends \
+snapd \
 xterm \
 curl \
 build-essential \
@@ -61,6 +67,8 @@ nano \
 sudo \
 openssh-client \
 nginx \
+net-tools \
+iputils-ping \
 wireshark \
 nmap \
 gfortran \
@@ -74,7 +82,8 @@ inkscape \
 tcpdump \
 iproute2 \
 openssl \
-firefox 
+firefox \
+&& apt-get clean
 
 #Load users from DB Test user
 #Load Student DB webpages into dir
