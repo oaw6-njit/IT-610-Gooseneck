@@ -10,14 +10,14 @@
 # name container based on ucid argument
 #change ucid and password based on arguments and sign in
 
-read -p "Enter ucid: " ucid
+read -r -p "Enter ucid: " ucid
 
 #Check if valid (Remove spaces and special characters)
 
 #Check if container is running
 if docker ps --format '{{.Names}}' | grep -qx $ucid; then
   ##Stop VM
-  echo "Stopping container $ucid
+  echo "Stopping container $ucid..."
   docker stop $ucid
   exit 0
 else

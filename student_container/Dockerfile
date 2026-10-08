@@ -82,7 +82,7 @@ inkscape \
 tcpdump \
 iproute2 \
 openssl \
-firefox \
+falkon \
 && apt-get clean
 
 #Load users from DB Test user
@@ -102,6 +102,26 @@ RUN useradd -m -s /bin/bash admin && \
 
 RUN useradd -m -s /bin/bash student && \
     echo "student:studentpass" | chpasswd
+
+# Give student ownership of website content (optional)
+RUN mkdir -p /var/www/html && \
+chown -R student:student /var/www/html
+ 
+# Configure sudo permissions
+RUN cat > /etc/sudoers.d/lab-users <<'EOF'
+ 
+Cmnd_Alias NGINX_CMDS = \
+/etc/init.d/nginx start, \
+/etc/init.d/nginx stop, \
+/etc/init.d/nginx restart, \
+/etc/init.d/nginx reload, \
+/etc/init.d/nginx status
+ 
+admin ALL=(ALL:ALL) ALL
+student ALL=(root) NGINX_CMDS
+EOF
+ 
+RUN chmod 440 /etc/sudoers.d/lab-users
 
 #Copy config and entry point files
 COPY sshd_config /etc/ssh/sshd_config

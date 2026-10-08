@@ -10,7 +10,7 @@
 # name container based on ucid argument
 #change ucid and password based on arguments and sign in
 
-read -p "Enter ucid: " ucid
+read -r -p "Enter ucid: " ucid
 
 #Check if valid (Remove spaces and special characters)
 
@@ -32,7 +32,7 @@ else
   -v ${ucid}_ssh_config:/etc/ssh \
   -v ${ucid}_var_lib_data:/var/lib \
   -v ${ucid}_var_log_data:/var/log \
-  -v ${ucid}_var_log_data:/var/www \
+  -v ${ucid}_var_www_data:/var/www \
   -v ${ucid}_opt_data:/opt \
   student_img
 fi
