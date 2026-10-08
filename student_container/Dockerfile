@@ -35,10 +35,6 @@ tigervnc-common \
 openssh-server \
 dbus-x11 \
 x11-xserver-utils \
-&& apt-get clean
-
-##Minimal installs (apps)
-RUN apt-get install -y --no-install-recommends \
 snapd \
 xterm \
 curl \
