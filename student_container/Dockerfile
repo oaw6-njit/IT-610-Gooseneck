@@ -6,12 +6,14 @@
 ##	script to give the container the name of a student's ucid.
 # ########################################################################
 ## @details To-do list (Put in separate doc)
+##	Give student a GUI interface for their container
 ##	Give student access to web server (localhost)
 ##	Give readme for student to easily use this container
 ##	Give student account based on ucid (provided by db or api request)
 ##	Hide root priviliges
 ##	Give admin account
 ##	Give student limited sudo access.
+##	Use --no-install-recommends for minimal installation. (NOT FOR TigerVNC)
 # ########################################################################
 
 FROM ubuntu:24.04
@@ -20,7 +22,9 @@ FROM ubuntu:24.04
 
 ## @brief Installs dependencies and configure permissions sets
 ## @details To-do list (Put in separate doc)
+##	split apt into no recommends and full installs
 ##	have ansible install/update packages.
+##	run sudo apt update and full-upgrade on start
 ##	rebuild image every x interval to maintain updates for students
 
 ##Full installs (core)
@@ -102,7 +106,6 @@ chown -R student:student /var/www/html
 # Configure sudo permissions
 RUN cat > /etc/sudoers.d/lab-users <<'EOF'
 Cmnd_Alias NGINX_CMDS = \
-/etc/init.d/nginx, \
 /etc/init.d/nginx start, \
 /etc/init.d/nginx stop, \
 /etc/init.d/nginx restart, \
