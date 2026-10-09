@@ -71,7 +71,3 @@ The list of installed applications and versions is still being documented. Add t
 - Document installed programs and versions
 - Add container-specific VNC connection details
 - Include troubleshooting guidance
-
-## Change log
-
-- Initial README created with build, run, VNC access, stop, and deletion instructions
