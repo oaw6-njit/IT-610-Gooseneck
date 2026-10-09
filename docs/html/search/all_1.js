@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['entrypoint_2esh_0',['entrypoint.sh',['../entrypoint_8sh.html',1,'']]]
+  ['delete_5fgooseneck_2esh_0',['delete_gooseneck.sh',['../delete__gooseneck_8sh.html',1,'']]],
+  ['dockerfile_1',['Dockerfile',['../_dockerfile.html',1,'(Global Namespace)'],['../student__container_2_dockerfile.html',1,'(Global Namespace)']]]
 ];
