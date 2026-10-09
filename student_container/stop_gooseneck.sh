@@ -1,27 +1,24 @@
 #!/bin/bash
+## @file stop_gooseneck.sh
+## @brief Stop a running Gooseneck container for the supplied UCID.
+## @details The script prompts for a UCID, verifies the matching container is
+##          currently running, and then stops it cleanly.
+## @warning If the container is not running or cannot be found, the script exits
+##          with an error code.
 
-#stop_gooseneck.sh
-#Stop a container with ip and port (may need to use docker compose)
-
-#To-do list
-#assign static ip
-# keep track of ips set
-# Free ip upon container deletion
-# name container based on ucid argument
-#change ucid and password based on arguments and sign in
-
+## Prompt for the UCID of the container to stop.
 read -r -p "Enter ucid: " ucid
 
-#Check if valid (Remove spaces and special characters)
+## Validate the user input before using it in Docker commands.
+## Additional sanitization may be added here if stricter input validation is needed.
 
-#Check if container is running
-if docker ps --format '{{.Names}}' | grep -qx $ucid; then
-  ##Stop VM
+## Check whether the matching container is currently running.
+if docker ps --format '{{.Names}}' | grep -qx "$ucid"; then
   echo "Stopping container $ucid..."
-  docker stop $ucid
+  docker stop "$ucid"
   exit 0
 else
-  echo "error: container with name $ucid not on/found. Exitting..."
+  echo "error: container with name $ucid not on/found. Exiting..."
   exit 2
 fi
 

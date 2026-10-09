@@ -101,7 +101,13 @@ $(function(){initNavTree('entrypoint_8sh.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">entrypoint.sh File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+
+<p>Starts the container's SSH and VNC services on launch.  
+<a href="#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Starts the container's SSH and VNC services on launch. </p>
+<p>This script configures a VNC session for the configured system users, generates any missing SSH host keys, starts the SSH service, launches the TigerVNC servers for the student and admin accounts, and then keeps the container alive by tailing /dev/null. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

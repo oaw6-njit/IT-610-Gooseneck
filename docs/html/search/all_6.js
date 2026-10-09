@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ubuntu_0',['ubuntu',['../_dockerfile.html#aca5cf0c1961ea561286473798653631a',1,'Dockerfile']]],
-  ['ucid_1',['ucid',['../run__gooseneck_8sh.html#aceeacb0e476000d4d0138300eea31785',1,'run_gooseneck.sh']]]
+  ['installed_20environment_0',['Installed environment',['../md_student__container_2dockerfile.html#autotoc_md1',1,'']]],
+  ['installed_20programs_1',['Installed programs',['../index.html#autotoc_md17',1,'']]]
 ];

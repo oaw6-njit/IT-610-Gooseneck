@@ -1,2 +1,15 @@
 \doxysection{student\+\_\+container/build\+\_\+gooseneck.sh File Reference}
 \hypertarget{build__gooseneck_8sh}{}\label{build__gooseneck_8sh}\index{student\_container/build\_gooseneck.sh@{student\_container/build\_gooseneck.sh}}
+
+
+Build the Docker image used to create Gooseneck student containers.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Build the Docker image used to create Gooseneck student containers. 
+
+This script builds the student\+\_\+img image from the local Dockerfile. Use --no-\/cache to force a full rebuild without Docker\textquotesingle{}s layer cache. Build output is redirected to logs/build/student\+\_\+img.\+log for review. \begin{DoxyWarning}{Warning}
+The build process may take several minutes depending on the system. 
+\end{DoxyWarning}

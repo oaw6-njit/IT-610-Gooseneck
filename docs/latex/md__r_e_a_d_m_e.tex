@@ -1,19 +1,87 @@
-\chapter{README}
-\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{README@{README}}
-//! Overview
+\chapter{Gooseneck Student Container}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Gooseneck Student Container@{Gooseneck Student Container}}
+\label{md__r_e_a_d_m_e_autotoc_md7}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md7}%
 
-//! Prerequisites
 
-//! Quick start
+This README was created using Microsoft Copilot.
 
-//! Connect with VNC
+Gooseneck is a lightweight student lab environment packaged in a container and accessed through a VNC viewer.\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md__r_e_a_d_m_e_autotoc_md8}
+This project provides a containerized student workspace that can be built, launched, and connected to remotely. It is designed for a classroom or lab environment where students need a consistent desktop environment with preconfigured access.\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Before getting started, make sure you have\+:
 
-//! Stop the container
 
-//! Delete the container
+\begin{DoxyItemize}
+\item A Linux-\/based environment or compatible shell
+\item Access to a VNC client such as \href{https://mobaxterm.mobatek.net/}{\texttt{ Moba\+Xterm}} or \href{https://tigervnc.org/}{\texttt{ Tiger\+VNC}}
+\item Docker or the project’s required container tooling available on your system
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{Quick start}{Quick start}}\label{md__r_e_a_d_m_e_autotoc_md10}
 
-//! Installed programs
+\begin{DoxyEnumerate}
+\item Open a terminal and navigate to the {\ttfamily student\+\_\+container} directory.
+\item Build the container\+:
+\end{DoxyEnumerate}
 
-//! Planned updates
 
-//! Change log 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ student\_container}
+\DoxyCodeLine{bash\ build\_gooseneck.sh}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Start the container. When prompted, enter your UCID\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ run\_gooseneck.sh}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Connect to the container using your VNC client.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{Connect with VNC}{Connect with VNC}}\label{md__r_e_a_d_m_e_autotoc_md11}
+Use a VNC viewer such as \href{https://mobaxterm.mobatek.net/}{\texttt{ Moba\+Xterm}}, \href{https://tigervnc.org/}{\texttt{ Tiger\+VNC}}, or another compatible client. Connect using the connection details shown for your running container.\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsection{\texorpdfstring{Default credentials}{Default credentials}}\label{md__r_e_a_d_m_e_autotoc_md12}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Account   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Username   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Password    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Account   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Username   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Password    }\\\cline{1-3}
+\endhead
+Student   &{\ttfamily student}   &{\ttfamily studentpass}    \\\cline{1-3}
+Admin   &{\ttfamily admin}   &{\ttfamily adminpass}    \\\cline{1-3}
+Root   &{\ttfamily root}   &{\ttfamily rootpass}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysection{\texorpdfstring{Stop the container}{Stop the container}}\label{md__r_e_a_d_m_e_autotoc_md13}
+To stop an existing container, run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ stop\_gooseneck.sh}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysection{\texorpdfstring{Delete the container}{Delete the container}}\label{md__r_e_a_d_m_e_autotoc_md14}
+The container must be stopped before it can be deleted. This script can also remove associated volumes; deleting those volumes removes stored data.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ delete\_gooseneck.sh}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{\texorpdfstring{Installed programs}{Installed programs}}\label{md__r_e_a_d_m_e_autotoc_md15}
+The list of installed applications and versions is still being documented. Add the software list here once it is finalized.\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{\texorpdfstring{Planned updates}{Planned updates}}\label{md__r_e_a_d_m_e_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Document installed programs and versions
+\item Add container-\/specific VNC connection details
+\item Include troubleshooting guidance 
+\end{DoxyItemize}

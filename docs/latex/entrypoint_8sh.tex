@@ -1,2 +1,13 @@
 \doxysection{student\+\_\+container/entrypoint.sh File Reference}
 \hypertarget{entrypoint_8sh}{}\label{entrypoint_8sh}\index{student\_container/entrypoint.sh@{student\_container/entrypoint.sh}}
+
+
+Starts the container\textquotesingle{}s SSH and VNC services on launch.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Starts the container\textquotesingle{}s SSH and VNC services on launch. 
+
+This script configures a VNC session for the configured system users, generates any missing SSH host keys, starts the SSH service, launches the Tiger\+VNC servers for the student and admin accounts, and then keeps the container alive by tailing /dev/null. 

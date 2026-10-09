@@ -25,7 +25,17 @@
 var NAVTREE =
 [
   [ "IT 610 - Gooseneck", "index.html", [
-    [ "README", "md__r_e_a_d_m_e.html", null ],
+    [ "Gooseneck Student Container", "index.html", "index" ],
+    [ "Gooseneck Student Container Dockerfile", "md_student__container_2dockerfile.html", [
+      [ "Installed environment", "md_student__container_2dockerfile.html#autotoc_md1", null ],
+      [ "Accounts and web root", "md_student__container_2dockerfile.html#autotoc_md2", null ],
+      [ "Sudo permissions", "md_student__container_2dockerfile.html#autotoc_md3", null ],
+      [ "Configuration and startup", "md_student__container_2dockerfile.html#autotoc_md4", null ],
+      [ "Exposed ports", "md_student__container_2dockerfile.html#autotoc_md5", null ],
+      [ "Build and run", "md_student__container_2dockerfile.html#autotoc_md6", null ],
+      [ "Stop a container", "md_student__container_2dockerfile.html#autotoc_md7", null ],
+      [ "Delete a container", "md_student__container_2dockerfile.html#autotoc_md8", null ]
+    ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
     ] ]

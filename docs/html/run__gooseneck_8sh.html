@@ -101,7 +101,13 @@ $(function(){initNavTree('run__gooseneck_8sh.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">run_gooseneck.sh File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+
+<p>Start or restart a student's Gooseneck container by UCID.  
+<a href="#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Start or restart a student's Gooseneck container by UCID. </p>
+<p>This script checks whether a Docker container with the supplied UCID is already running. If it is active, the container is restarted. If it exists but is currently stopped, it is started. Otherwise, a new container is created from the student_img image using the UCID as the container name. </p><dl class="section note"><dt>Note</dt><dd>The UCID should be a simple identifier with no spaces or special characters. </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

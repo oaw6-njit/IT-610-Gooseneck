@@ -1,2 +1,15 @@
 \doxysection{student\+\_\+container/run\+\_\+gooseneck.sh File Reference}
 \hypertarget{run__gooseneck_8sh}{}\label{run__gooseneck_8sh}\index{student\_container/run\_gooseneck.sh@{student\_container/run\_gooseneck.sh}}
+
+
+Start or restart a student\textquotesingle{}s Gooseneck container by UCID.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Start or restart a student\textquotesingle{}s Gooseneck container by UCID. 
+
+This script checks whether a Docker container with the supplied UCID is already running. If it is active, the container is restarted. If it exists but is currently stopped, it is started. Otherwise, a new container is created from the student\+\_\+img image using the UCID as the container name. \begin{DoxyNote}{Note}
+The UCID should be a simple identifier with no spaces or special characters. 
+\end{DoxyNote}

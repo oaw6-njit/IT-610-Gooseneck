@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['readme_0',['README',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['readme_2emd_1',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['run_5fgooseneck_2esh_2',['run_gooseneck.sh',['../run__gooseneck_8sh.html',1,'']]]
+  ['default_20credentials_0',['Default credentials',['../index.html#autotoc_md14',1,'']]],
+  ['delete_20a_20container_1',['Delete a container',['../md_student__container_2dockerfile.html#autotoc_md8',1,'']]],
+  ['delete_20the_20container_2',['Delete the container',['../index.html#autotoc_md16',1,'']]],
+  ['delete_5fgooseneck_2esh_3',['delete_gooseneck.sh',['../delete__gooseneck_8sh.html',1,'']]],
+  ['dockerfile_4',['Dockerfile',['../_dockerfile.html',1,'(Global Namespace)'],['../student__container_2_dockerfile.html',1,'(Global Namespace)'],['../md_student__container_2dockerfile.html',1,'Gooseneck Student Container Dockerfile']]],
+  ['dockerfile_2emd_5',['dockerfile.md',['../dockerfile_8md.html',1,'']]]
 ];

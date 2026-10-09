@@ -1,2 +1,15 @@
 \doxysection{student\+\_\+container/delete\+\_\+gooseneck.sh File Reference}
 \hypertarget{delete__gooseneck_8sh}{}\label{delete__gooseneck_8sh}\index{student\_container/delete\_gooseneck.sh@{student\_container/delete\_gooseneck.sh}}
+
+
+Delete a Gooseneck container and optionally its associated volumes.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Delete a Gooseneck container and optionally its associated volumes. 
+
+This script prompts for a UCID, checks that the container exists and is not running, and then asks for confirmation before removing it. It can also delete the named Docker volumes that store the container data. \begin{DoxyWarning}{Warning}
+Removing Docker volumes is permanent and cannot be undone. 
+\end{DoxyWarning}

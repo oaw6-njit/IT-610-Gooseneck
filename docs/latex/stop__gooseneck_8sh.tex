@@ -1,2 +1,15 @@
 \doxysection{student\+\_\+container/stop\+\_\+gooseneck.sh File Reference}
 \hypertarget{stop__gooseneck_8sh}{}\label{stop__gooseneck_8sh}\index{student\_container/stop\_gooseneck.sh@{student\_container/stop\_gooseneck.sh}}
+
+
+Stop a running Gooseneck container for the supplied UCID.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Stop a running Gooseneck container for the supplied UCID. 
+
+The script prompts for a UCID, verifies the matching container is currently running, and then stops it cleanly. \begin{DoxyWarning}{Warning}
+If the container is not running or cannot be found, the script exits with an error code. 
+\end{DoxyWarning}

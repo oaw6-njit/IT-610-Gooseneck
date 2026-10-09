@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['delete_5fgooseneck_2esh_0',['delete_gooseneck.sh',['../delete__gooseneck_8sh.html',1,'']]],
-  ['dockerfile_1',['Dockerfile',['../_dockerfile.html',1,'(Global Namespace)'],['../student__container_2_dockerfile.html',1,'(Global Namespace)']]]
+  ['build_20and_20run_0',['Build and run',['../md_student__container_2dockerfile.html#autotoc_md6',1,'']]],
+  ['build_5fgooseneck_2esh_1',['build_gooseneck.sh',['../build__gooseneck_8sh.html',1,'']]]
 ];

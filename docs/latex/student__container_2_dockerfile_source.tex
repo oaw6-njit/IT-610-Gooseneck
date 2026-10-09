@@ -2,146 +2,97 @@
 \hypertarget{student__container_2_dockerfile_source}{}\label{student__container_2_dockerfile_source}\index{student\_container/Dockerfile@{student\_container/Dockerfile}}
 \mbox{\hyperlink{student__container_2_dockerfile}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#\ \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#\#\ @file\ Dockerfile}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#\#\ @brief\ Gooseneck\ Student\ LXQT\ container\ image}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#\#\ @details\ The\ student\ container\ Dockerfile\ that\ builds\ a\ default}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#\#\ \ student\ container.\ Based\ on\ Ubuntu\ 24.04\ image.\ Use\ with\ a}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#\#\ \ script\ to\ give\ the\ container\ the\ name\ of\ a\ student's\ ucid.}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#\ \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#\#\ @details\ To-\/do\ list\ (Put\ in\ separate\ doc)}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#\#\ \ Give\ student\ a\ GUI\ interface\ for\ their\ container}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#\#\ \ Give\ student\ access\ to\ web\ server\ (localhost)}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#\#\ \ Give\ readme\ for\ student\ to\ easily\ use\ this\ container}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#\#\ \ Give\ student\ account\ based\ on\ ucid\ (provided\ by\ db\ or\ api\ request)}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#\#\ \ Hide\ root\ priviliges}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#\#\ \ Give\ admin\ account}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#\#\ \ Give\ student\ limited\ sudo\ access.}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#\#\ \ Use\ -\/-\/no-\/install-\/recommends\ for\ minimal\ installation.\ (NOT\ FOR\ TigerVNC)}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\ \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ FROM\ ubuntu:24.04}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#Configure\ acl/linux\ permission\ set}}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\#\ @brief\ Installs\ dependencies\ and\ configure\ permissions\ sets}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\#\ @details\ To-\/do\ list\ (Put\ in\ separate\ doc)}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#\#\ \ split\ apt\ into\ no\ recommends\ and\ full\ installs}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\#\ \ have\ ansible\ install/update\ packages.}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#\#\ \ run\ sudo\ apt\ update\ and\ full-\/upgrade\ on\ start}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#\#\ \ rebuild\ image\ every\ x\ interval\ to\ maintain\ updates\ for\ students}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#\#Full\ installs\ (core)}}
-\DoxyCodeLine{00031\ RUN\ apt-\/get\ update\ \&\&\ apt-\/get\ install\ -\/y\ \(\backslash\)}
-\DoxyCodeLine{00032\ lxqt\ \(\backslash\)}
-\DoxyCodeLine{00033\ tigervnc-\/standalone-\/server\ \(\backslash\)}
-\DoxyCodeLine{00034\ tigervnc-\/common\ \(\backslash\)}
-\DoxyCodeLine{00035\ openssh-\/server\ \(\backslash\)}
-\DoxyCodeLine{00036\ dbus-\/x11\ \(\backslash\)}
-\DoxyCodeLine{00037\ x11-\/xserver-\/utils\ \(\backslash\)}
-\DoxyCodeLine{00038\ snapd\ \(\backslash\)}
-\DoxyCodeLine{00039\ xterm\ \(\backslash\)}
-\DoxyCodeLine{00040\ curl\ \(\backslash\)}
-\DoxyCodeLine{00041\ build-\/essential\ \(\backslash\)}
-\DoxyCodeLine{00042\ wget\ \(\backslash\)}
-\DoxyCodeLine{00043\ ca-\/certificates\ \(\backslash\)}
-\DoxyCodeLine{00044\ git\ \(\backslash\)}
-\DoxyCodeLine{00045\ unzip\ \(\backslash\)}
-\DoxyCodeLine{00046\ zip\ \(\backslash\)}
-\DoxyCodeLine{00047\ python3\ \(\backslash\)}
-\DoxyCodeLine{00048\ python3-\/pip\ \(\backslash\)}
-\DoxyCodeLine{00049\ python3-\/venv\ \(\backslash\)}
-\DoxyCodeLine{00050\ golang-\/go\ \(\backslash\)}
-\DoxyCodeLine{00051\ rustc\ \(\backslash\)}
-\DoxyCodeLine{00052\ cargo\ \(\backslash\)}
-\DoxyCodeLine{00053\ default-\/jdk\ \(\backslash\)}
-\DoxyCodeLine{00054\ nodejs\ \(\backslash\)}
-\DoxyCodeLine{00055\ npm\ \(\backslash\)}
-\DoxyCodeLine{00056\ git\ \(\backslash\)}
-\DoxyCodeLine{00057\ php\ \(\backslash\)}
-\DoxyCodeLine{00058\ postgresql\ \(\backslash\)}
-\DoxyCodeLine{00059\ mariadb-\/server\ \(\backslash\)}
-\DoxyCodeLine{00060\ vim\ \(\backslash\)}
-\DoxyCodeLine{00061\ neovim\ \(\backslash\)}
-\DoxyCodeLine{00062\ nano\ \(\backslash\)}
-\DoxyCodeLine{00063\ sudo\ \(\backslash\)}
-\DoxyCodeLine{00064\ openssh-\/client\ \(\backslash\)}
-\DoxyCodeLine{00065\ nginx\ \(\backslash\)}
-\DoxyCodeLine{00066\ net-\/tools\ \(\backslash\)}
-\DoxyCodeLine{00067\ iputils-\/ping\ \(\backslash\)}
-\DoxyCodeLine{00068\ wireshark\ \(\backslash\)}
-\DoxyCodeLine{00069\ nmap\ \(\backslash\)}
-\DoxyCodeLine{00070\ gfortran\ \(\backslash\)}
-\DoxyCodeLine{00071\ python3-\/pandas\ \(\backslash\)}
-\DoxyCodeLine{00072\ python3-\/numpy\ \(\backslash\)}
-\DoxyCodeLine{00073\ python3-\/matplotlib\ \(\backslash\)}
-\DoxyCodeLine{00074\ python3-\/scipy\ \(\backslash\)}
-\DoxyCodeLine{00075\ libreoffice\ \(\backslash\)}
-\DoxyCodeLine{00076\ gimp\ \(\backslash\)}
-\DoxyCodeLine{00077\ inkscape\ \(\backslash\)}
-\DoxyCodeLine{00078\ tcpdump\ \(\backslash\)}
-\DoxyCodeLine{00079\ iproute2\ \(\backslash\)}
-\DoxyCodeLine{00080\ openssl\ \(\backslash\)}
-\DoxyCodeLine{00081\ falkon\ \(\backslash\)}
-\DoxyCodeLine{00082\ \&\&\ apt-\/get\ clean}
+\DoxyCodeLine{00001\ FROM\ ubuntu:24.04}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ RUN\ apt-\/get\ update\ \&\&\ apt-\/get\ install\ -\/y\ \(\backslash\)}
+\DoxyCodeLine{00004\ lxqt\ \(\backslash\)}
+\DoxyCodeLine{00005\ tigervnc-\/standalone-\/server\ \(\backslash\)}
+\DoxyCodeLine{00006\ tigervnc-\/common\ \(\backslash\)}
+\DoxyCodeLine{00007\ openssh-\/server\ \(\backslash\)}
+\DoxyCodeLine{00008\ dbus-\/x11\ \(\backslash\)}
+\DoxyCodeLine{00009\ x11-\/xserver-\/utils\ \(\backslash\)}
+\DoxyCodeLine{00010\ snapd\ \(\backslash\)}
+\DoxyCodeLine{00011\ xterm\ \(\backslash\)}
+\DoxyCodeLine{00012\ curl\ \(\backslash\)}
+\DoxyCodeLine{00013\ build-\/essential\ \(\backslash\)}
+\DoxyCodeLine{00014\ wget\ \(\backslash\)}
+\DoxyCodeLine{00015\ ca-\/certificates\ \(\backslash\)}
+\DoxyCodeLine{00016\ git\ \(\backslash\)}
+\DoxyCodeLine{00017\ unzip\ \(\backslash\)}
+\DoxyCodeLine{00018\ zip\ \(\backslash\)}
+\DoxyCodeLine{00019\ python3\ \(\backslash\)}
+\DoxyCodeLine{00020\ python3-\/pip\ \(\backslash\)}
+\DoxyCodeLine{00021\ python3-\/venv\ \(\backslash\)}
+\DoxyCodeLine{00022\ golang-\/go\ \(\backslash\)}
+\DoxyCodeLine{00023\ rustc\ \(\backslash\)}
+\DoxyCodeLine{00024\ cargo\ \(\backslash\)}
+\DoxyCodeLine{00025\ default-\/jdk\ \(\backslash\)}
+\DoxyCodeLine{00026\ nodejs\ \(\backslash\)}
+\DoxyCodeLine{00027\ npm\ \(\backslash\)}
+\DoxyCodeLine{00028\ git\ \(\backslash\)}
+\DoxyCodeLine{00029\ php\ \(\backslash\)}
+\DoxyCodeLine{00030\ postgresql\ \(\backslash\)}
+\DoxyCodeLine{00031\ mariadb-\/server\ \(\backslash\)}
+\DoxyCodeLine{00032\ vim\ \(\backslash\)}
+\DoxyCodeLine{00033\ neovim\ \(\backslash\)}
+\DoxyCodeLine{00034\ nano\ \(\backslash\)}
+\DoxyCodeLine{00035\ sudo\ \(\backslash\)}
+\DoxyCodeLine{00036\ openssh-\/client\ \(\backslash\)}
+\DoxyCodeLine{00037\ nginx\ \(\backslash\)}
+\DoxyCodeLine{00038\ net-\/tools\ \(\backslash\)}
+\DoxyCodeLine{00039\ iputils-\/ping\ \(\backslash\)}
+\DoxyCodeLine{00040\ wireshark\ \(\backslash\)}
+\DoxyCodeLine{00041\ nmap\ \(\backslash\)}
+\DoxyCodeLine{00042\ gfortran\ \(\backslash\)}
+\DoxyCodeLine{00043\ python3-\/pandas\ \(\backslash\)}
+\DoxyCodeLine{00044\ python3-\/numpy\ \(\backslash\)}
+\DoxyCodeLine{00045\ python3-\/matplotlib\ \(\backslash\)}
+\DoxyCodeLine{00046\ python3-\/scipy\ \(\backslash\)}
+\DoxyCodeLine{00047\ libreoffice\ \(\backslash\)}
+\DoxyCodeLine{00048\ gimp\ \(\backslash\)}
+\DoxyCodeLine{00049\ inkscape\ \(\backslash\)}
+\DoxyCodeLine{00050\ tcpdump\ \(\backslash\)}
+\DoxyCodeLine{00051\ iproute2\ \(\backslash\)}
+\DoxyCodeLine{00052\ openssl\ \(\backslash\)}
+\DoxyCodeLine{00053\ falkon\ \(\backslash\)}
+\DoxyCodeLine{00054\ \&\&\ apt-\/get\ clean}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ RUN\ mkdir\ -\/p\ /var/run/sshd}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ RUN\ echo\ \textcolor{stringliteral}{"{}root:rootpass"{}}\ |\ chpasswd}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ admin\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00061\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}admin:adminpass"{}}\ |\ chpasswd\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00062\ \ \ \ \ usermod\ -\/aG\ sudo\ admin}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ student\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00065\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}student:studentpass"{}}\ |\ chpasswd}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ RUN\ mkdir\ -\/p\ /var/www/html\ \&\&\ \(\backslash\)}
+\DoxyCodeLine{00068\ chown\ -\/R\ student:student\ /var/www/html}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ RUN\ cat\ >\ /etc/sudoers.d/lab-\/users\ <<\textcolor{stringliteral}{'EOF'}}
+\DoxyCodeLine{00071\ Cmnd\_Alias\ NGINX\_CMDS\ =\ \(\backslash\)}
+\DoxyCodeLine{00072\ /etc/init.d/nginx\ start,\ \(\backslash\)}
+\DoxyCodeLine{00073\ /etc/init.d/nginx\ stop,\ \(\backslash\)}
+\DoxyCodeLine{00074\ /etc/init.d/nginx\ restart,\ \(\backslash\)}
+\DoxyCodeLine{00075\ /etc/init.d/nginx\ reload,\ \(\backslash\)}
+\DoxyCodeLine{00076\ /etc/init.d/nginx\ status}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ admin\ ALL=(ALL:ALL)\ ALL}
+\DoxyCodeLine{00079\ student\ ALL=(root)\ NGINX\_CMDS}
+\DoxyCodeLine{00080\ EOF}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ RUN\ chmod\ 440\ /etc/sudoers.d/lab-\/users}
 \DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#Load\ users\ from\ DB\ Test\ user}}
-\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#Load\ Student\ DB\ webpages\ into\ dir}}
-\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#Load\ config\ for\ ssh\ and\ x-\/utils}}
+\DoxyCodeLine{00084\ COPY\ sshd\_config\ /etc/ssh/sshd\_config}
+\DoxyCodeLine{00085\ COPY\ entrypoint.sh\ /usr/local/bin/entrypoint.sh}
+\DoxyCodeLine{00086\ COPY\ index.html\ /var/www/html/index.html}
 \DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#\#\ @brief\ Setup\ SSH\ config\ with\ file}}
-\DoxyCodeLine{00089\ RUN\ mkdir\ -\/p\ /var/run/sshd}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#\#\ @brief\ Create\ accounts\ with\ default\ passwords\ (WILL\ REPLACE\ WITH\ DB\ AND\ HASHES\ LATER)}}
-\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#\#\ Can\ replace\ echo\ with\ file/DB\ substitutions\ later.}}
-\DoxyCodeLine{00093\ RUN\ echo\ \textcolor{stringliteral}{"{}root:rootpass"{}}\ |\ chpasswd}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ admin\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00096\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}admin:adminpass"{}}\ |\ chpasswd\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00097\ \ \ \ \ usermod\ -\/aG\ sudo\ admin}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ RUN\ useradd\ -\/m\ -\/s\ /bin/bash\ student\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00100\ \ \ \ \ echo\ \textcolor{stringliteral}{"{}student:studentpass"{}}\ |\ chpasswd}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#\ Give\ student\ ownership\ of\ website\ content\ (optional)}}
-\DoxyCodeLine{00103\ RUN\ mkdir\ -\/p\ /var/www/html\ \&\&\ \(\backslash\)}
-\DoxyCodeLine{00104\ chown\ -\/R\ student:student\ /var/www/html}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#\ Configure\ sudo\ permissions}}
-\DoxyCodeLine{00107\ RUN\ cat\ >\ /etc/sudoers.d/lab-\/users\ <<\textcolor{stringliteral}{'EOF'}}
-\DoxyCodeLine{00108\ Cmnd\_Alias\ NGINX\_CMDS\ =\ \(\backslash\)}
-\DoxyCodeLine{00109\ /etc/init.d/nginx\ start,\ \(\backslash\)}
-\DoxyCodeLine{00110\ /etc/init.d/nginx\ stop,\ \(\backslash\)}
-\DoxyCodeLine{00111\ /etc/init.d/nginx\ restart,\ \(\backslash\)}
-\DoxyCodeLine{00112\ /etc/init.d/nginx\ reload,\ \(\backslash\)}
-\DoxyCodeLine{00113\ /etc/init.d/nginx\ status}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00115\ admin\ ALL=(ALL:ALL)\ ALL}
-\DoxyCodeLine{00116\ student\ ALL=(root)\ NGINX\_CMDS}
-\DoxyCodeLine{00117\ EOF}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00119\ RUN\ chmod\ 440\ /etc/sudoers.d/lab-\/users}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#Copy\ config\ and\ entry\ point\ files}}
-\DoxyCodeLine{00122\ COPY\ sshd\_config\ /etc/ssh/sshd\_config}
-\DoxyCodeLine{00123\ COPY\ entrypoint.sh\ /usr/local/bin/entrypoint.sh}
-\DoxyCodeLine{00124\ COPY\ index.html\ /var/www/html/index.html}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ RUN\ chmod\ +x\ /usr/local/bin/entrypoint.sh}
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#\ SSH\ (22),\ Student\ VNC\ (5901),\ Admin\ VNC\ (5902)}}
-\DoxyCodeLine{00129\ EXPOSE\ 22\ 5901\ 5902}
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00131\ ENTRYPOINT\ [\textcolor{stringliteral}{"{}/usr/local/bin/entrypoint.sh"{}}]}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#\#\ @details\ To\ build\ container,\ use}}
-\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#\#\ docker\ build\ -\/-\/progress=plain\ -\/t\ student\_img\ .\ |\ tee\ logs/build/student\_img.log}}
-\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#\#}}
-\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#\#\ Include\ -\/-\/no-\/cache\ for\ a\ full\ build\ and\ verbose\ log}}
-\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#\#}}
-\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#\#\ \ To\ run\ container,\ use}}
-\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#\#\ docker\ run\ -\/d\ -\/-\/name\ student\_env\ -\/p\ 2222:22\ -\/p\ 5901:5901\ -\/p\ 5902:5902\ student\_img}}
-\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#\#\ }}
-\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#\#\ To-\/do\ (Make\ a\ script\ to\ run\ the\ container\ and\ name\ it)}}
+\DoxyCodeLine{00088\ RUN\ chmod\ +x\ /usr/local/bin/entrypoint.sh}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ EXPOSE\ 22\ 5901\ 5902}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ ENTRYPOINT\ [\textcolor{stringliteral}{"{}/usr/local/bin/entrypoint.sh"{}}]}
 
 \end{DoxyCode}

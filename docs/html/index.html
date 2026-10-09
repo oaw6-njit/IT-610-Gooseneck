@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IT 610 - Gooseneck: Main Page</title>
+<title>IT 610 - Gooseneck: Gooseneck Student Container</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -97,10 +97,73 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">IT 610 - Gooseneck Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Gooseneck Student Container </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<p>This README was created using Microsoft Copilot.</p>
+<p>Gooseneck is a lightweight student lab environment packaged in a container and accessed through a VNC viewer.</p>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Overview</h1>
+<p>This project provides a containerized student workspace that can be built, launched, and connected to remotely. It is designed for a classroom or lab environment where students need a consistent desktop environment with preconfigured access.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Prerequisites</h1>
+<p>Before getting started, make sure you have:</p>
+<ul>
+<li>A Linux-based environment or compatible shell</li>
+<li>Access to a VNC client such as <a href="https://mobaxterm.mobatek.net/">MobaXterm</a> or <a href="https://tigervnc.org/">TigerVNC</a></li>
+<li>Docker or the project’s required container tooling available on your system</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Quick start</h1>
+<ol type="1">
+<li>Open a terminal and navigate to the <code>student_container</code> directory.</li>
+<li>Build the container:</li>
+</ol>
+<div class="fragment"><div class="line">cd student_container</div>
+<div class="line">bash build_gooseneck.sh</div>
+</div><!-- fragment --><ol type="1">
+<li>Start the container. When prompted, enter your UCID:</li>
+</ol>
+<div class="fragment"><div class="line">bash run_gooseneck.sh</div>
+</div><!-- fragment --><ol type="1">
+<li>Connect to the container using your VNC client.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Connect with VNC</h1>
+<p>Use a VNC viewer such as <a href="https://mobaxterm.mobatek.net/">MobaXterm</a>, <a href="https://tigervnc.org/">TigerVNC</a>, or another compatible client. Connect using the connection details shown for your running container.</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Default credentials</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Account   </th><th class="markdownTableHeadNone">Username   </th><th class="markdownTableHeadNone">Password    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Student   </td><td class="markdownTableBodyNone"><code>student</code>   </td><td class="markdownTableBodyNone"><code>studentpass</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Admin   </td><td class="markdownTableBodyNone"><code>admin</code>   </td><td class="markdownTableBodyNone"><code>adminpass</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Root   </td><td class="markdownTableBodyNone"><code>root</code>   </td><td class="markdownTableBodyNone"><code>rootpass</code>   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md15"></a>
+Stop the container</h1>
+<p>To stop an existing container, run:</p>
+<div class="fragment"><div class="line">bash stop_gooseneck.sh</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
+Delete the container</h1>
+<p>The container must be stopped before it can be deleted. This script can also remove associated volumes; deleting those volumes removes stored data.</p>
+<div class="fragment"><div class="line">bash delete_gooseneck.sh</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+Installed programs</h1>
+<p>The list of installed applications and versions is still being documented. Add the software list here once it is finalized.</p>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Planned updates</h1>
+<ul>
+<li>Document installed programs and versions</li>
+<li>Add container-specific VNC connection details</li>
+<li>Include troubleshooting guidance </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->
