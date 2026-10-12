@@ -1,6 +1,6 @@
 # Gooseneck Student Container
 
-This README was created using Microsoft Copilot.
+This README was created using Microsoft Copilot. Link to Trello board here: https://trello.com/b/ZcmckTP2/it-610-project-gooseneck
 
 Gooseneck is a lightweight student lab environment packaged in a container and accessed through a VNC viewer.
 
