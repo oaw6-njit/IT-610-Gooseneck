@@ -1,0 +1,82 @@
+\chapter{Gooseneck Student Container Dockerfile}
+\hypertarget{md_student__container_2dockerfile}{}\label{md_student__container_2dockerfile}\index{Gooseneck Student Container Dockerfile@{Gooseneck Student Container Dockerfile}}
+\label{md_student__container_2dockerfile_autotoc_md0}%
+\Hypertarget{md_student__container_2dockerfile_autotoc_md0}%
+
+
+This Dockerfile builds an Ubuntu 24.\+04 image for the Gooseneck student desktop container. It provides an LXQt desktop, development and end-\/user tools, a web server, and SSH/\+VNC access. The entry point starts the configured services. Container naming and UCID-\/based accounts are managed outside the image.\hypertarget{md_student__container_2dockerfile_autotoc_md1}{}\doxysection{\texorpdfstring{Installed environment}{Installed environment}}\label{md_student__container_2dockerfile_autotoc_md1}
+The image installs the desktop, remote-\/access services, language toolchains, networking utilities, and end-\/user applications in a single package-\/install layer.
+
+The Dockerfile explicitly installs these APT packages\+:
+
+
+\begin{DoxyItemize}
+\item Desktop and remote access\+: {\ttfamily lxqt}, {\ttfamily tigervnc-\/standalone-\/server}, {\ttfamily tigervnc-\/common}, {\ttfamily openssh-\/server}, {\ttfamily openssh-\/client}, {\ttfamily dbus-\/x11}, {\ttfamily x11-\/xserver-\/utils}, {\ttfamily xterm}
+\item System and networking\+: {\ttfamily snapd}, {\ttfamily sudo}, {\ttfamily nginx}, {\ttfamily net-\/tools}, {\ttfamily iputils-\/ping}, {\ttfamily iproute2}, {\ttfamily wireshark}, {\ttfamily nmap}, {\ttfamily tcpdump}, {\ttfamily openssl}
+\item Build tools and utilities\+: {\ttfamily build-\/essential}, {\ttfamily curl}, {\ttfamily wget}, {\ttfamily ca-\/certificates}, {\ttfamily git}, {\ttfamily unzip}, {\ttfamily zip}
+\item Language toolchains\+: {\ttfamily python3}, {\ttfamily python3-\/pip}, {\ttfamily python3-\/venv}, {\ttfamily golang-\/go}, {\ttfamily rustc}, {\ttfamily cargo}, {\ttfamily default-\/jdk}, {\ttfamily nodejs}, {\ttfamily npm}, {\ttfamily php}, {\ttfamily gfortran}
+\item Databases\+: {\ttfamily postgresql}, {\ttfamily mariadb-\/server}
+\item Python libraries\+: {\ttfamily python3-\/pandas}, {\ttfamily python3-\/numpy}, {\ttfamily python3-\/matplotlib}, {\ttfamily python3-\/scipy}
+\item Editors and applications\+: {\ttfamily vim}, {\ttfamily neovim}, {\ttfamily nano}, {\ttfamily libreoffice}, {\ttfamily gimp}, {\ttfamily inkscape}, {\ttfamily falkon}
+\end{DoxyItemize}\hypertarget{md_student__container_2dockerfile_autotoc_md2}{}\doxysection{\texorpdfstring{Accounts and web root}{Accounts and web root}}\label{md_student__container_2dockerfile_autotoc_md2}
+The build creates the runtime directory required by the SSH daemon, then creates the {\ttfamily admin} and {\ttfamily student} accounts. The administrator belongs to the {\ttfamily sudo} group. The web document root is {\ttfamily /var/www/html} and is owned by {\ttfamily student}.
+
+\begin{quote}
+{\bfseries{Warning\+:}} The configured root, administrator, and student passwords are placeholders and are not suitable for deployment. Replace them with a secure provisioning mechanism before exposing the image. \end{quote}
+\hypertarget{md_student__container_2dockerfile_autotoc_md3}{}\doxysection{\texorpdfstring{Sudo permissions}{Sudo permissions}}\label{md_student__container_2dockerfile_autotoc_md3}
+The administrator receives unrestricted {\ttfamily sudo} access. The student is limited to the listed NGINX service commands. The generated sudoers file is assigned the permissions required by {\ttfamily sudo}.\hypertarget{md_student__container_2dockerfile_autotoc_md4}{}\doxysection{\texorpdfstring{Configuration and startup}{Configuration and startup}}\label{md_student__container_2dockerfile_autotoc_md4}
+The image installs the SSH configuration, container entry point, and default web page. It makes the entry-\/point script executable and starts the container through that script.\hypertarget{md_student__container_2dockerfile_autotoc_md5}{}\doxysection{\texorpdfstring{Exposed ports}{Exposed ports}}\label{md_student__container_2dockerfile_autotoc_md5}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Service   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ Container port    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Service   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ Container port    }\\\cline{1-2}
+\endhead
+SSH   &\PBS\raggedleft 22    \\\cline{1-2}
+Student VNC   &\PBS\raggedleft 5901    \\\cline{1-2}
+Administrator VNC   &\PBS\raggedleft 5902   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_student__container_2dockerfile_autotoc_md6}{}\doxysection{\texorpdfstring{Build and run}{Build and run}}\label{md_student__container_2dockerfile_autotoc_md6}
+Build the image and save the build log\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ build\_gooseneck.sh}
+
+\end{DoxyCode}
+
+
+The build script creates or refreshes the {\ttfamily student\+\_\+img} Docker image from this Dockerfile. It writes the output to a log file so you can review the build progress and errors.
+
+Run the container lifecycle script using the UCID as the container name\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ run\_gooseneck.sh}
+
+\end{DoxyCode}
+
+
+The script restarts a running container, starts an existing stopped container, or creates a new container from {\ttfamily student\+\_\+img}. A new container maps host ports {\ttfamily 2222}, {\ttfamily 5901}, and {\ttfamily 5902} to container ports {\ttfamily 22}, {\ttfamily 5901}, and {\ttfamily 5902}, and attaches named volumes for persistent data. These host ports must be available when creating a container.\hypertarget{md_student__container_2dockerfile_autotoc_md7}{}\doxysection{\texorpdfstring{Stop a container}{Stop a container}}\label{md_student__container_2dockerfile_autotoc_md7}
+To stop a running container, run the stop script and enter its UCID\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ stop\_gooseneck.sh}
+
+\end{DoxyCode}
+\hypertarget{md_student__container_2dockerfile_autotoc_md8}{}\doxysection{\texorpdfstring{Delete a container}{Delete a container}}\label{md_student__container_2dockerfile_autotoc_md8}
+To remove an existing container and its associated resources, run the delete script and enter the UCID you want to delete\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bash\ delete\_gooseneck.sh}
+
+\end{DoxyCode}
+
+
+The delete script removes the named container, any mapped host ports created by that container, and the container\textquotesingle{}s persistent data volume if it is no longer needed. 

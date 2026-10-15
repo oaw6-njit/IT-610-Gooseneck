@@ -1,0 +1,45 @@
+\chapter{Gooseneck Student Container Dockerfile}
+\hypertarget{student_container_dockerfile}{}\label{student_container_dockerfile}\index{Gooseneck Student Container Dockerfile@{Gooseneck Student Container Dockerfile}}
+This Dockerfile builds an Ubuntu 24.\+04 image for the Gooseneck student desktop container. It provides an LXQt desktop, development and end-\/user tools, a web server, and SSH/\+VNC access. The entry point starts the configured services. Container naming and UCID-\/based accounts are managed outside the image.\hypertarget{student_container_dockerfile_autotoc_md0}{}\doxysubsection{\texorpdfstring{Installed environment}{Installed environment}}\label{student_container_dockerfile_autotoc_md0}
+The image installs the desktop, remote-\/access services, language toolchains, networking utilities, and end-\/user applications in a single package-\/install layer.\hypertarget{student_container_dockerfile_autotoc_md1}{}\doxysubsection{\texorpdfstring{Accounts and web root}{Accounts and web root}}\label{student_container_dockerfile_autotoc_md1}
+The build creates the runtime directory required by the SSH daemon, then creates the {\ttfamily admin} and {\ttfamily student} accounts. The administrator belongs to the {\ttfamily sudo} group. The web document root is {\ttfamily /var/www/html} and is owned by {\ttfamily student}.
+
+\begin{quote}
+{\bfseries{Warning\+:}} The configured root, administrator, and student passwords are placeholders and are not suitable for deployment. Replace them with a secure provisioning mechanism before exposing the image. \end{quote}
+\hypertarget{student_container_dockerfile_autotoc_md2}{}\doxysubsection{\texorpdfstring{Sudo permissions}{Sudo permissions}}\label{student_container_dockerfile_autotoc_md2}
+The administrator receives unrestricted {\ttfamily sudo} access. The student is limited to the listed NGINX service commands. The generated sudoers file is assigned the permissions required by {\ttfamily sudo}.\hypertarget{student_container_dockerfile_autotoc_md3}{}\doxysubsection{\texorpdfstring{Configuration and startup}{Configuration and startup}}\label{student_container_dockerfile_autotoc_md3}
+The image installs the SSH configuration, container entry point, and default web page. It makes the entry-\/point script executable and starts the container through that script.\hypertarget{student_container_dockerfile_autotoc_md4}{}\doxysubsection{\texorpdfstring{Exposed ports}{Exposed ports}}\label{student_container_dockerfile_autotoc_md4}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Service   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ Container port    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Service   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ Container port    }\\\cline{1-2}
+\endhead
+SSH   &\PBS\raggedleft 22    \\\cline{1-2}
+Student VNC   &\PBS\raggedleft 5901    \\\cline{1-2}
+Administrator VNC   &\PBS\raggedleft 5902   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{student_container_dockerfile_autotoc_md5}{}\doxysubsection{\texorpdfstring{Build and run}{Build and run}}\label{student_container_dockerfile_autotoc_md5}
+Build the image and save the build log\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{docker\ build\ -\/-\/progress=plain\ -\/t\ student\_img\ .\ |\ tee\ logs/build/student\_img.log}
+
+\end{DoxyCode}
+
+
+Add {\ttfamily -\/-\/no-\/cache} to rebuild every image layer.
+
+Start the container with SSH and VNC port mappings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{docker\ run\ -\/d\ -\/-\/name\ student\_env\ -\/p\ 2222:22\ -\/p\ 5901:5901\ -\/p\ 5902:5902\ student\_img}
+
+\end{DoxyCode}
+ 
